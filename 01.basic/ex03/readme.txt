@@ -3,3 +3,4 @@ ex03: 애플리케이션 분리2- ES6 모듈 시스템
 2) 프론트엔드 애플리케이션은 자바스크립트 외에  다양한 assets(css , img , fomt)에 대한 로딩 동기화도 고려해야 한다. 
  -> 해결방법은  assets들도 모듈로 봐야한다. -> webpack의 등장 ex04번 (자바스크립트랑ㄴ assets을 모듈로 취급한다.)
 
+package.json에 type:module 적어줌
