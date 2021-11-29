@@ -22,11 +22,10 @@ module.exports = (env) => {
                 } 
             },{
                 test: /\.(sa|sc|c)ss$/i,
-                use:[
-                    'style-loader', 
-                    {loader: 'css-loader', options: {modules: false} }, 
-                    'sass-loader'
-                ]   
+                use:['style-loader' ,
+                {loader:'css-loader', options: {modules : env['css-modules'] !== 'false' } },
+                'sass-loader'
+            ]   // 순서가 중요함
             },{
                 test: /\.(png|gif|jpe?g|svg|ico|tiff?|bmp)$/i,   //jpg 도되고 jpge도되고
                 type: 'asset/resource'

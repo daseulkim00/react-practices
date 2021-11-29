@@ -2,11 +2,11 @@ const path = require('path');
 
 module.exports = (env) => {
 
-    const entry = path.resolve(`src/${env.src}/index.js`);
+    const entry = path.resolve(`src/index.js`);
     
     return{
         mode:'development',
-        entry: path.resolve(`src/${env.src}/index.js`),   // 환경변수로 셋팅함 환경변수로 설정할려면 패키지.json에 --env를 적어줘야한다.
+        entry: path.resolve(`src/index.js`),   // 환경변수로 셋팅함 환경변수로 설정할려면 패키지.json에 --env를 적어줘야한다.
         output:{
             path: path.resolve('public'),
             filename: 'bundle.js',
@@ -26,10 +26,9 @@ module.exports = (env) => {
                     'style-loader', 
                     {loader: 'css-loader', options: {modules: false} }, 
                     'sass-loader'
-                ]   
+                ]
             },{
-                test: /\.(png|gif|jpe?g|svg|ico|tiff?|bmp)$/i,   //jpg 도되고 jpge도되고
-                type: 'asset/resource'
+               type: 'asset/resource'
             }]
         },
         devtool:"eval-source-map", // 번들링이랑 우리 원래소스랑 연결시켜주는 설정?
