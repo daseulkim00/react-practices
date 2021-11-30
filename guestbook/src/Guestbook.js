@@ -1,9 +1,13 @@
 import React from 'react';
+import './assets/styles.css';
+import Form from './Form';
+import List from './List';
 
 export default function() {
     return (
         <div id='App'>
-            <h1>Guestbook</h1>
+            <Form></Form>
+            <List></List>
         </div>
     )
 }

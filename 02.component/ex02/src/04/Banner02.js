@@ -1,9 +1,8 @@
 import React from 'react';
+import styles from './assets/css/Banner01.css';
 
-import styles from'./assets/css/Banner02.css';
- 
 export default function() {
     return (
-        <h1 className={styles.Header}>Hello CSS Module</h1>
+        <h1 className={styles.Header}>Hello React</h1>
     )
 }

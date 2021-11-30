@@ -6,7 +6,7 @@ module.exports = (env) => {
     
     return{
         mode:'development',
-        entry: path.resolve(`src/${env.src}/index.js`),   // 환경변수로 셋팅함 환경변수로 설정할려면 패키지.json에 --env를 적어줘야한다.
+        entry: entry,   // 환경변수로 셋팅함 환경변수로 설정할려면 패키지.json에 --env를 적어줘야한다.
         output:{
             path: path.resolve('public'),
             filename: 'bundle.js',
@@ -24,7 +24,7 @@ module.exports = (env) => {
                 test: /\.(sa|sc|c)ss$/i,
                 use:[
                     'style-loader', 
-                    {loader: 'css-loader', options: {modules: false} }, 
+                    {loader: 'css-loader', options: {modules: true} }, 
                     'sass-loader'
                 ]   
             },{

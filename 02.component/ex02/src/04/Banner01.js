@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styles from'./assets/css/Banner01.css';
  
 export default function() {
