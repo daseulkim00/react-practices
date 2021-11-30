@@ -1,6 +1,8 @@
 const path = require('path');
 
-module.exports = (env) => ({
+module.exports = (env) => {
+    console.log(env)
+    return ({
     mode: "none",
     entry: path.resolve(`src/${env.src}/index.js`),
     output: {
@@ -37,5 +39,5 @@ module.exports = (env) => ({
         compress: true,
         historyApiFallback: true
     }
-});
+})};
 
