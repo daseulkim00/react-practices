@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faBell, faCheckCircle, faTimesCircle} from '@fortawesome/free-solid-svg-icons'; 
 
-// addtional.. 곡필요하지 않음
+// additional.. 곡필요하지 않음
 import {library}  from '@fortawesome/fontawesome-svg-core';
 import {far}  from '@fortawesome/free-regular-svg-icons';
 import {fab}  from '@fortawesome/free-brands-svg-icons';
