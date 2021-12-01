@@ -12,6 +12,8 @@ export default class TitelBar01 extends Component {
     }
 
     onClickHandler(){
+        // no VS state.no
+
         //this.no++;   // 컴포넌트의 this가 아니다. 값만올리고 다시 렌더링이 안된다.
         this.setState({
             no: this.state.no + 1 
