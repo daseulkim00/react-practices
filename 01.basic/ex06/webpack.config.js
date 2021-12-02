@@ -20,6 +20,7 @@ module.exports = {
             type: 'asset/resource'
         }]
     },
+    target:['web','es4'], // IE에서 되게 만들려면 적어줘야함
     devtool:"eval-source-map", // 번들링이랑 우리 원래소스랑 연결시켜주는 설정?
     devServer:{
         host:'0.0.0.0',

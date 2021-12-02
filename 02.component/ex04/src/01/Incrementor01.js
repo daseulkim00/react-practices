@@ -2,35 +2,50 @@ import React, { Component } from 'react';
 
 export default class extends Component {
     constructor() {
-        super(...arguments);
+        console.log('==============cons============');
+        super(...arguments)      // 배열에 있는 값 다 건져주는거
+
         this.state = {
-            // step: this.props.step, 변화되지 않는 값이라 지워버림
-            val: this.props.begin
+            num: this.props.begin
         }
     }
+    //state 가 변경되면 render가 호출된다.
+    
 
-    onClickButton(e){
-        // 이렇게 쓰면 안된다. this.state.value = this.state.value + this.props.step; setstate함수를 사용해라
-        this.setState({
-            val: this.state.val + this.props.step
+    onClickButton(e) {
+        console.log('==============onclick============');
+        this.setState({      // 이 안에있는 값이 변경되면 화면을 다시 그려줘야하는 데이터를 넣음
+            num: this.state.num + this.props.step
         })
     }
-
+    
     render() {
+        console.log('==========================');
         return (
             <div>
-                <button onClick={this.onClickButton.bind(this)}>  {/*  // this 안해주면 전역변수로 되서 this를 써줘야함 */}
+                <button onClick={this.onClickButton.bind(this)}>
                     <strong>+</strong>
                 </button>
                 {' '}
-                <span>{this.state.val}</span>
-                {' '}
 
-                {/* 과제 - 되면 숫자 내려가게 */}
-                
-                <button >  
+                <span>{this.state.num}</span>
+
+                {' '}
+                <button onClick={(e) => {
+                    let res = this.state.num - this.props.step
+                    if (res < this.props.begin)
+                        return;
+
+                    this.setState({
+                        num: res
+                    })
+                }
+                }>
                     <strong>-</strong>
                 </button>
+                {' '}
+
+              
             </div>
         );
     }

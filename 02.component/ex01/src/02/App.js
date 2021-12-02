@@ -1,7 +1,7 @@
 import React from 'react';
 import FoodList  from './FoodList';
 
-export default function(){
+export default function(){  // 여기서 데이터 만들어줌
   const foods = [{
     no: 1,
     name: "Bread",

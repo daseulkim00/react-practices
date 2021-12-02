@@ -5,6 +5,7 @@ export default function App() {
     const onChangeMessageInput = function(event) {
         console.log(event.target.name, ':', event.target.value);
     }
+    // 글 쓸때마다 변화가 있으니깐 변하면 콘솔에 찍힌다.
 
     const onAddFormSubmit = function(event) {
         event.preventDefault();

@@ -23,8 +23,8 @@ export default class FoodList extends Component{
         // });
 
     
-        return(
-            <ul>
+        return( // class 로 이렇게 받아줘야함 this.props.foods 이 foods는 App.js의  <FoodList foods={foods}></FoodList>의 foods와 같아야함
+            <ul>                            {/* return 생략*/}
                 { this.props.foods.map((food) => <ListItem name={food.name} quantity={food.quantity} / >)}
             </ul>
         )

@@ -25,6 +25,9 @@ export default function App() {
 
     const onMouseMoveImage =(e)=>{
        // const offsetTop = imageRef.current               dom element이다
+       // 리액트에 있는게아니라 dom에 있는것 imageRef
+      // console.log(e.target, '' , imageRef.current);
+
         const offsetTop = imageRef.current.offsetTop;
         const offsetLeft = imageRef.current.offsetLeft;
         console.log('mousemove', `x=${e.clientX-offsetLeft}. y=${e.clientY-offsetTop}`);

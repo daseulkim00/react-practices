@@ -12,7 +12,7 @@ module.exports = {
             test: /\.(sa|sc|c)ss$/i,
             use:['style-loader' , 'css-loader', 'sass-loader']   // 순서가 중요함
         },{
-            test: /\.(png|gif|jpe?g|svg|ico|tiff?|bmp)$/i,   //jpg 도되고 jpge도되고
+            test: /\.(png|gif|jpe?g|svg|ico|tiff?|bmp)$/i,   //jpg 도되고 jpge도되고  // i: 대소문자 무시  // g: global
             type: 'asset/resource'
         }]
     },

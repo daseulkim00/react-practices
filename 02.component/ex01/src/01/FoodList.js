@@ -4,7 +4,7 @@ import ListItem from "./ListItem";
 export default class FoodList extends Component{
     
     render(){
-        return(
+        return(// 데이터는 여기서 주고
             <ul>
                 <ListItem name="Egg" quantity="10"></ListItem>
                 <ListItem name="Bread" quantity="20"></ListItem>

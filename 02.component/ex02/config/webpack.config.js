@@ -24,7 +24,7 @@ module.exports = (env) => {
                 test: /\.(sa|sc|c)ss$/i,
                 use:[
                     'style-loader', 
-                    {loader: 'css-loader', options: {modules: true} }, 
+                    {loader: 'css-loader', options: {modules: true} }, // true를 줘야 해싱(안겹치게바꾸는것)이된다.
                     'sass-loader'
                 ]   
             },{

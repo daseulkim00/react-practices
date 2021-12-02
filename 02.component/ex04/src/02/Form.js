@@ -8,8 +8,10 @@ export default function Form() {
     const [name , setName] = useState("");
     const [email , setEmail] = useState("");
     const [validEmail, setValidEmail] = useState(false);
+    const [password,setPassword]=useState("");
     const[gender, setGender] = useState('female');
     const [birthYear, setBirthYear] =  useState('1984');
+    const[self, setSelf] = useState("");
     const [agreeProv, setAgreeProv] =  useState('no');
 
     const onChangeInputName = (e) =>{
@@ -21,10 +23,14 @@ export default function Form() {
     const onChangeInputEmail = (e) =>{
         setEmail(e.target.value);
 
-        const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
         setValidEmail(re.test(e.target.value));
 
     };
+    const onChangeInputPassword =(e) =>{
+        setPassword(e.target.value);
+    }
+    
 
     const onChangeInputGender = (e) =>{
         setGender( e.target.value);
@@ -39,6 +45,10 @@ export default function Form() {
         if(true){
             setAgreeProv(status);
         }
+    }
+
+    const onchangeinputSelf = (e) => {
+        setSelf(e.target.value)
     }
 
     return (
@@ -70,7 +80,7 @@ export default function Form() {
                 }
 
             <label htmlFor="password">패스워드</label>
-            <input id="password" name="password" type="password" value={ "" } />
+            <input id="password" name="password" type="password" value={ password } onChange={onChangeInputPassword} />
 
             <fieldset>
                 <legend>성별</legend>
@@ -79,7 +89,7 @@ export default function Form() {
             </fieldset>
 
             <label htmlFor="birthYear">생년</label>
-            <select id="birthYear" value={birthYear} onChange={(e) =>{setBirthYear(e.target.value)}}>
+            <select id="birthYear" value={ birthYear } onChange={(e) =>{setBirthYear(e.target.value)}}>
                 <option value='1984'>1984년</option>
                 <option value='1985'>1985년</option>
                 <option value='1986'>1986년</option>
@@ -90,7 +100,7 @@ export default function Form() {
             </select>
 
             <label htmlFor="birthYear">자기소개</label>
-            <textarea value={""} />
+            <textarea  onChange={onchangeinputSelf} />
 
             <fieldset>
             <legend>약관동의</legend>    {/*    defaultChecked={ false } 안해도된다. */}
