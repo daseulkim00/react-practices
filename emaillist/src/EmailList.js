@@ -2,8 +2,11 @@ import React from 'react';
 import styles from'./assets/scss/EmailList.scss';
 import Email from './Email';
 
-const EmailList = ({keyword,emails}) => {
+const EmailList = ({keyword,emails,onRemove}) => {
     // console.log('emaillist: ',keyword)
+    const a = () => {
+
+    }
     return (
         <ul className={styles.Emaillist}>
             {emails 
@@ -12,7 +15,9 @@ const EmailList = ({keyword,emails}) => {
                                         key={email.no} 
                                         firstName={email.firstName} 
                                         lastName={email.lastName} 
-                                        email={email.email} />)
+                                        email={email.email}
+                                        onRemove={onRemove} 
+                                        listno={email.no}/>)
             }
         </ul>
     );
