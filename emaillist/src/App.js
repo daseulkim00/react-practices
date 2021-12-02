@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import RegisterForm from './RegisterForm';
 import SearchBar from './SearchBar';
 import EmailList from './EmailList';
@@ -18,20 +18,21 @@ export default function(){
   // 자식한테 데이터를 보낼께 있으면 보내달라고 알리는 함수 만들기
   const notifyKeywordChanged =(keyword) =>{
     //console.log(keyword);
-    // 부모가 자식한테 값 보내주는거
+    
     setKeyword(keyword);
     
   };
 
   const setFormChanged =(add) => {
-    add.no = emaillist.length +1  // 내가 배열 추가해주면 그 게시물이 원래게시물 배열의 +1
-    setemaillist(emaillist.concat(add));
+    add.no = emaillist.length +1  // 내가 배열 추가해주면 그 게시물이 원래게시물 배열의 +1 - 삭제할때 no 넘겨주기위해서 사용
+
+    setemaillist(emaillist.concat(add));  // 배열추가
 
     //   console.log(setemaillist);
     //  console.log(a);
     }
 
-    const onRemove = no => {
+    const onRemove = (no) => {
       setemaillist(emaillist.filter(user => user.no !== no))
     };
 
@@ -39,7 +40,7 @@ export default function(){
   return(
     <div className={'App'}>
       <RegisterForm callback={setFormChanged} /> 
-      <SearchBar callback={notifyKeywordChanged} />
+      <SearchBar keyword={keyword} callback={notifyKeywordChanged} />
       <EmailList keyword={keyword} emails={emaillist} onRemove={onRemove}/>
       
     </div>

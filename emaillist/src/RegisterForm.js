@@ -13,6 +13,7 @@ export default function({callback}){
                   "lastName" : e.target.lastName.value,
                   "email" : e.target.email.value})
                   }}>
+                      
             <input type='text' id='firstName' placeholder="성" className={styles.InputFirstName} />
             <input type='text' id='lastName' placeholder="이름" className={styles.InputLastName} />
             <input type='text' id='email' placeholder="이메일" className={styles.InputEmail} />
