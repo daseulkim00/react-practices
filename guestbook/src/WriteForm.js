@@ -21,7 +21,7 @@ export default function WriteForm() {
             <input
                 type={'submit'}
                 value={'보내기'}
-                autoComplete={'off'} />
+                autoComplete={'off'} /> 
         </form>
     );
 }
