@@ -7,7 +7,7 @@ const EmailList = ({keyword,emails,onRemove}) => {
 
     return (
         <ul className={styles.Emaillist}>
-             {emails                           /*  indexof 값이 없을 경우 -1을 반환한다     */
+             {emails                           /*  indexof 값이 없을 경우 -1을 반환한다    */
                     .filter(email => email.firstName.indexOf(keyword) !== -1 || email.lastName.indexOf(keyword) !== -1 || email.email.indexOf(keyword) !== -1)
                     .map(email => <Email 
                                         key={email.no} 

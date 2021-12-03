@@ -26,7 +26,8 @@ export default function({title,description,tasks, status}){
             <div 
                 className = {
                     showDetails ?     
-                        [styles.Card__Title, styles.Card__Title__open ].join(' ') :
+                        [styles.Card__Title, styles.Card__Title__open ].join(' ') 
+                        :
                         styles.Card__Title
                 }
                 onClick = {() => setShowDetails(!showDetails)}>
