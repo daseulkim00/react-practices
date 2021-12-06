@@ -32,6 +32,8 @@ export default function Hook({ color }) {
     /**
      *  4. Alternative 02: componentDidMount & componentWillUnmount
      *  배열을 비워버리면 componentDidMount & componentWillUnmount 사용할수있다?
+     *  제일많이 사용한다.
+     * [] 쓰면 배열 보장된다.
      */
     useEffect(() => {
         console.log('After Mount(componentDidMount)');
