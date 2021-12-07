@@ -39,8 +39,57 @@
 5. concurrently
 6. node application
 
-emaillist
+### emaillist
     - 개발 통합 설정(with Node Backend)
     - backend: Fully APIs(Node Exporess기반)
     - Frontend: React(SPA)
     - AJAX: fetch 기반
+
+### cors란?
+1. origin
+   URL에서 protocol + host + port를 합친 것
+   ```
+   > location.origin
+   <'http://localhost:999'
+   ```
+
+2. 같은 origin vs 다른 origin
+3. Same Orign Policy    (사용자 보안상의 보호를 위해서 )
+   브라우저가 동일 출처 정책(SOP)를 지켜서 다른 출처의 리소스 접근을 금지
+   - 외부 리소스를 못가져오는 단점
+   - XSS 등과 같은 보안 취약점을 사전에 방지할 수 있다.
+
+4. CORS(Cross Origin Resource Sharing): 브라우저 정책 (mode:cors로 설정되어있음)
+```
+Access to fetch at 'http://localhost:8888/api' from origin 'http://localhost:9999' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
+
+```
+
+ 1. simple request
+   <pre>
+      JS               browser            server
+         ------------>
+            fetch()
+
+   </pre>
+
+ 2. preflight request
+   <pre>
+      JS               browser            server
+         ------------>       ------------>
+            fetch()            OPTIONS /api
+                             <------------
+                                 200 ok
+                                 Access-Control-Allow-origin: *  (모든접근에 대해서 허락하겠다.)
+                                
+                             ------------> 
+                              GET /api
+                              <------------
+                              200 ok
+                              Access-Control-Allow-origin:* 
+                               ============================
+                                 "{...........}"
+   respons <----------
+
+
+   </pre>

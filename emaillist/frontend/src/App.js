@@ -1,48 +1,57 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import RegisterForm from './RegisterForm';
 import SearchBar from './SearchBar';
-import EmailList from './EmailList';
+import Emaillist from './Emaillist';
 
-import './assets/scss/App.scss'; 
-import data from './assets/json/data.json';
+import './assets/scss/App.scss';
+// import data from './assets/json/data.json';
 
-//  module:true로 했지만 hashing 하고 싶지 않을때  scss에서 클래스나 아이디 이름에:global()로 적어주고 사용
+export default function() {
+    const [emails, setEmails] = useState([]);
+    const [keyword, setKeyword] = useState('');
 
-export default function(){
-  // 부모가 자식한테 값 전달
-  const [keyword,setKeyword] = useState('');
-  const [emaillist,setemaillist] = useState(data);
-  
-
- 
-  // 자식한테 데이터를 보낼께 있으면 보내달라고 알리는 함수 만들기
-  const notifyKeywordChanged =(keyword) =>{
-    //console.log(keyword);
-    
-    setKeyword(keyword);
-    
-  };
-
-  const setFormChanged =(add) => {
-    add.no = emaillist.length +1  // 내가 배열 추가해주면 그 게시물이 원래게시물 배열의 +1 - 삭제할때 no 넘겨주기위해서 사용
-
-    setemaillist(emaillist.concat(add));  // 배열추가
-
-    //   console.log(setemaillist);
-    //  console.log(a);
-    }
-
-    const onRemove = (no) => {
-      setemaillist(emaillist.filter(user => user.no !== no))
+    const notifyKeywordChanged = (keyword) => {
+      setKeyword(keyword);
     };
 
-  // keyword 가 상태로 들어가 있어야 한다. 그래야 자식한테 떨어진다.
-  return(
-    <div className={'App'}>
-      <RegisterForm callback={setFormChanged} /> 
-      <SearchBar keyword={keyword} callback={notifyKeywordChanged} />
-      <EmailList keyword={keyword} emails={emaillist} onRemove={onRemove}/>
-      
-    </div>
-  )
+    useEffect(async () => {
+      try {
+        const response = await fetch('http://localhost:8888/api', {
+          method: 'get',
+          mode: 'cors',                    // no-cors, cors - 서버에 cors설정을 해놨는지아닌지 알 수 있다, same-origin*
+          credentials:'same-origin',       // 인증 include, omit, same-origin*
+          cache:'no-cache',                // no-cache, reload, 
+          headers: {
+            'Content-Type': 'application/json',  //cf. application/x-www-form-urlencoded
+            'Accept': 'application/json'
+          },
+          redirect: 'follow',              // follow*, error, manual(rexponse.url)
+          referrer: 'client',              // no-referrer, *client  구글검색에서 들어왓다 이런것들을 알수 있는 것
+          body: null
+        });
+
+        if(!response.ok) {
+          throw new Error(`${response.status} ${response.statusText}`);
+        }
+
+        const jsonResult = await response.json();
+
+        if(jsonResult.result !== 'success') {
+          throw new Error(`${jsonResult.result} ${jsonResult.message}`);
+        }
+
+        setEmails(jsonResult.data);
+
+      } catch (err) {
+        console.error(err);
+      }
+    }, []);
+
+    return (
+        <div className={'App'}>
+          <RegisterForm />
+          <SearchBar keyword={keyword} callback={notifyKeywordChanged} />
+          <Emaillist keyword={keyword} emails={emails} />  
+        </div>
+    )
 }
