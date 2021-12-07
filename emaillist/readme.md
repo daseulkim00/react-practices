@@ -67,29 +67,42 @@ Access to fetch at 'http://localhost:8888/api' from origin 'http://localhost:999
 
  1. simple request
    <pre>
-      JS               browser            server
-         ------------>
-            fetch()
+         JS               browser            server
+         ------------>       ------------>
+                              GET /api
+
+                             <------------
+                                 200 ok
+                                 Access-Control-Allow-Origin: *  (모든접근에 대해서 허락하겠다.)
+                               ============================
+                                 "{...........}"
+   respons <----------
 
    </pre>
+
+   조건:
+   1) GET, HEAD, POST 중의 하나의 method를 쓰는 경우
+   2) Accept, Accept-Lan
 
  2. preflight request
    <pre>
       JS               browser            server
          ------------>       ------------>
             fetch()            OPTIONS /api
+                              Access-Control-Allow-Method: PUT / DELETE ....등등
+
+
+
                              <------------
                                  200 ok
-                                 Access-Control-Allow-origin: *  (모든접근에 대해서 허락하겠다.)
+                                 Access-Control-Allow-Origin:'*'  (모든접근에 대해서 허락하겠다.)
                                 
                              ------------> 
                               GET /api
                               <------------
                               200 ok
-                              Access-Control-Allow-origin:* 
+                              Access-Control-Allow-Origin:* 
                                ============================
                                  "{...........}"
    respons <----------
-
-
    </pre>

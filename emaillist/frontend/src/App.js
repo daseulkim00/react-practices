@@ -19,11 +19,11 @@ export default function() {
         const response = await fetch('http://localhost:8888/api', {
           method: 'get',
           mode: 'cors',                    // no-cors, cors - 서버에 cors설정을 해놨는지아닌지 알 수 있다, same-origin*
-          credentials:'same-origin',       // 인증 include, omit, same-origin*
+          credentials:'include',       // 인증 include, omit, same-origin*
           cache:'no-cache',                // no-cache, reload, 
           headers: {
-            'Content-Type': 'application/json',  //cf. application/x-www-form-urlencoded
-            'Accept': 'application/json'
+            'Content-Type': 'application/json',   // cf. application/x-www-form-urlencoded
+            'Accept': 'application'               // cf. text/html
           },
           redirect: 'follow',              // follow*, error, manual(rexponse.url)
           referrer: 'client',              // no-referrer, *client  구글검색에서 들어왓다 이런것들을 알수 있는 것
