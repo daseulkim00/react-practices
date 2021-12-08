@@ -7,6 +7,24 @@ import Guestbook from "./component/Guestbook";
 
 export default function App() {
     return (
-        <div>React Router 라이브러리 사용해 보기</div>
+    /*/
+        // /#/ 사용
+        <HashRouter>
+            <Routes>
+                <Route path='/' element={<Main />} />
+                <Route path='/guestbook' element={<Guestbook />} />
+                <Route path='/gallery' element={<Gallery />} />
+            </Routes>
+        </HashRouter>
+    /*/
+        <BrowserRouter>
+            <Routes>
+                <Route path='/' element={<Main />} />
+                <Route path='/guestbook' element={<Guestbook />} />
+                <Route path='/gallery' element={<Gallery />} />
+            </Routes>
+        </BrowserRouter>
+
+    //*/
     );
 }
